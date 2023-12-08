@@ -126,10 +126,10 @@ char *find_path(info_t *, char *, char *);
 int loophsh(char **);
 
 /* toem_errors.c */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+void _kputs(char *);
+int _kputchar(char);
+int _putek(char c, int fd);
+int _putsek(char *str, int fd);
 
 /* toem_string.c */
 int _strlen(char *);
@@ -167,11 +167,11 @@ int _alphabet(int c);
 int _trum(char *s);
 
 /* toem_errors1.c */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+int err_atoi(char *);
+void display_err(info_t *, char *);
+int display_p(int, int);
+char *convert_num(long int, int, int);
+void rem_comments(char *);
 
 /* embedded.c */
 int _exit(data_t *data);
