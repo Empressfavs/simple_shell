@@ -51,8 +51,7 @@ typedef struct liststr
 } list_t;
 
 /**
- *struct passinfo - contains pseudo-arguements to pass into a function,
- *		allowing uniform prototype for function pointer struct
+
  *@arg: a string generated from getline containing arguements
  *@argv: an array of strings generated from arg
  *@path: a string path for the current command
@@ -132,14 +131,14 @@ int _putek(char c, int fd);
 int _putsek(char *str, int fd);
 
 /* toem_string.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
+int _str_len(char *);
+int _str_cmp(char *, char *);
 char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
+char *_str_cat(char *, char *);
 
 /* toem_string1.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
+char *_str_cpy(char *, char *);
+char *_str_dupli(const char *);
 void _puts(char *);
 int _putchar(char);
 
