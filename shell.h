@@ -118,8 +118,8 @@ void search_cmd(info_t *);
 void fork_cmd(info_t *);
 
 /* toem_parser.c */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
+int is_command(info_t *, char *);
+char *duplicate_char(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
 /* loophsh.c */
