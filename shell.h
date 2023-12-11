@@ -51,8 +51,7 @@ typedef struct liststr
 } list_t;
 
 /**
- *struct passinfo - contains pseudo-arguements to pass into a function,
- *		allowing uniform prototype for function pointer struct
+
  *@arg: a string generated from getline containing arguements
  *@argv: an array of strings generated from arg
  *@path: a string path for the current command
@@ -113,33 +112,33 @@ typedef struct builtin
 
 /* toem_shloop.c */
 int hsh(info_t *, char **);
-int find_builtin(info_t *);
-void find_cmd(info_t *);
+int search_inbuilt(info_t *);
+void search_cmd(info_t *);
 void fork_cmd(info_t *);
 
 /* toem_parser.c */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
+int is_command(info_t *, char *);
+char *duplicate_char(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
 /* loophsh.c */
 int loophsh(char **);
 
 /* toem_errors.c */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+void _kputs(char *);
+int _kputchar(char);
+int _putek(char c, int fd);
+int _putsek(char *str, int fd);
 
 /* toem_string.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
+int _str_len(char *);
+int _str_cmp(char *, char *);
 char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
+char *_str_cat(char *, char *);
 
 /* toem_string1.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
+char *_str_cpy(char *, char *);
+char *_str_dupli(const char *);
 void _puts(char *);
 int _putchar(char);
 
@@ -167,11 +166,11 @@ int _alphabet(int c);
 int _trum(char *s);
 
 /* toem_errors1.c */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+int err_atoi(char *);
+void display_err(info_t *, char *);
+int display_p(int, int);
+char *convert_num(long int, int, int);
+void rem_comments(char *);
 
 /* print_error.c */
 void _eputs(char *str);
@@ -185,8 +184,8 @@ int _cd(data_t *data);
 int current(data_t *data);
 
 /* embedded2.c */
-int _history(data_t *data);
-int unset_alias(data_t *data, char *str);
+int _dsp_history(data_t *data);
+int _alias(data_t *data, char *str);
 int set_alias(data_t *data, char *str);
 int print_alias(list_t *node)
 int _alias(data_t *data);
@@ -201,12 +200,21 @@ void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
+<<<<<<< HEAD
 /* environment.c */
 int _environment(data_t *data);
 char *_getenviron(data_t *data, const char *name);
 int _setenviron(data_t *data);
 int _unsetenviron(data_t *data);
 int pop_env_list(data_t *data);
+=======
+/* toem_environ.c */
+char *_getenv(info_t *, const char *);
+int _ourenv(info_t *);
+int _oursetenv(info_t *);
+int _ourunsetenv(info_t *);
+int _env_list(info_t *);
+>>>>>>> 225a6c651be2d6fcaa6a028b0b42a75984caa82d
 
 /* toem_getenv.c */
 char **get_environ(info_t *);
