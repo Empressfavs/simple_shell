@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- *_kputs - prints an input string
+ *_eputs - prints an input string
  * @str: the string to be printed
  *
  * Return: Nothing
  */
-void _kputs(char *str)
+void _eputs(char *str)
 {
 	int i = 0;
 
@@ -20,13 +20,11 @@ void _kputs(char *str)
 }
 
 /**
- * _kputchar - writes the character c to stderr
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * _eputchar - writes the character c to stderr
+ * @c: The character that is to be printed
+ * Return: 1 on success, otherwise -1
  */
-int _kputchar(char c)
+int _eputchar(char c)
 {
 	static int loop;
 	static char buf[WRITE_BUF_SIZE];
@@ -43,7 +41,7 @@ int _kputchar(char c)
 
 /**
  * _putek - writes the character c to given ek
- * @c: The character to print
+ * @c:  The character to print
  * @ek: The filedescriptor to write to
  *
  * Return: On success 1.

@@ -5,7 +5,7 @@
  * @data: ContainS arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _history(data_t *data)
+int _history(info_t *data)
 {
 	print_list(data->history);
 	return (0);
@@ -18,7 +18,7 @@ int _history(data_t *data)
  *
  * Return: Always 0 on success or 1 on error
  */
-int unset_alias(data_t *data, char *str)
+int unset_alias(info_t *data, char *str)
 {
 	char *s, c;
 	int cha;
@@ -41,7 +41,7 @@ int unset_alias(data_t *data, char *str)
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(data_t *data, char *str)
+int set_alias(info_t *data, char *str)
 {
 	char *s;
 
@@ -83,7 +83,7 @@ int print_alias(list_t *node)
  * @data: Contains arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _alias(data_t *data)
+int _alias(info_t *data)
 {
 	int i = 0;
 	char *s = NULL;

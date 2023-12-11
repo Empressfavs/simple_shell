@@ -5,7 +5,7 @@
  * @data: Contains arguments used to maintain constant function prototype.
  * Return: Always 0
  */
-int _environment(data_t *data)
+int _environment(info_t *data)
 {
 	print_list_str(data->env);
 	return (0);
@@ -17,7 +17,7 @@ int _environment(data_t *data)
  * @name: environment variable name
  * Return: the value
  */
-char *_getenviron(data_t *data, const char *name)
+char *_getenviron(info_t *data, const char *name)
 {
 	list_t *node = data->env;
 	char *s;
@@ -37,7 +37,7 @@ char *_getenviron(data_t *data, const char *name)
  * @data: Contains potential arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _setenviron(data_t *data)
+int _setenviron(info_t *data)
 {
 	if (data->argc != 3)
 	{
@@ -53,8 +53,8 @@ int _setenviron(data_t *data)
  * _unsetenviron - Remove an environment variable
  * @data: Contains arguments used to maintain constant function prototype.
  *  Return: Always 0
- */i
-int _unsetenviron(data_t *data)
+ */
+int _unsetenviron(info_t *data)
 {
 	int i;
 
@@ -74,13 +74,15 @@ int _unsetenviron(data_t *data)
  * @data: Contains arguments used to maintain constant function prototype.
  * Return: Always 0
  */
-int pop_env_list(data_t *data)
+int pop_env_list(info_t *data)
 {
 	list_t *node = NULL;
 	size_t i;
 
 	for (i = 0; environ[i]; i++)
+	{
 		add_node_end(&node, environ[i], 0);
 	data->env = node;
+	}
 	return (0);
-
+}

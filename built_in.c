@@ -1,50 +1,51 @@
 #include "shell.h"
 
 /**
- * _exit - exits the shell
- * @data: contains arguments. Used to maintain constant function prototype.
+ * _ourexit - exits the shell
+ * @data: Contains potential arguments used to maintain constant function prototype.
  *  Return: exits with a given exit status
+ *         (0) if info.argv[0] != "exit"
  */
-int _exit(data_t *data)
+int _ourexit(info_t *data)
 {
-	int checkexit;
+	int exitcheck;
 
 	if (data->argv[1])
 	{
-		checkexit = _errtrum(data->argv[1]);
-		if (checkexit == -1)
+		exitcheck = _errtrum(data->argv[1]);
+		if (exitcheck == -1)
 		{
 			data->status = 2;
-			print_err(data, "Invalid number: ");
+			print_error(data, "Invalid number: ");
 			_eputs(data->argv[1]);
 			_eputchar('\n');
 			return (1);
 		}
-		data->error_num = _errtrum(data->argv[1]);
+		data->err_num = _errtrum(data->argv[1]);
 		return (-2);
 	}
-	data->error_num = -1;
+	data->err_num = -1;
 	return (-2);
 }
 
 /**
- * _cd - changes the current directory
- * @data: contains arguments used to maintain constant function prototype.
+ * _ourcd - change the current directory of the process
+ * @data: Contains potential arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _cd(data_t *data)
+int _ourcd(info_t *data)
 {
 	char *c, *direct, buffer[1024];
 	int ch_dir;
 
-	c = getcwd(buffer, 1024);
-	if (!c)
+	s = getcwd(buffer, 1024);
+	if (!s)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!data->argv[1])
 	{
 		direct = _getenv(data, "HOME=");
 		if (!direct)
-			ch_dir = chdir((direct = _getenv(info, "PWD=")) ? direct : "/");
+			ch_dir = chdir((direct = _getenv(data, "PWD=")) ? direct : "/");
 		else
 			ch_dir = chdir(direct);
 	}
@@ -52,7 +53,7 @@ int _cd(data_t *data)
 	{
 		if (!_getenv(data, "OLDPWD="))
 		{
-			_puts(c);
+			_puts(s);
 			_putchar('\n');
 			return (1);
 		}
@@ -75,17 +76,17 @@ int _cd(data_t *data)
 }
 
 /**
- * _current - changes the current directory
- * @data: Contain arguments used to maintain constant function prototype.
+ * _chcur - changes the current directory of the process
+ * @data: Contains potential arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _current(data_t *data)
+int _chcur(info_t *data)
 {
-	char **arg_arr;
+	char **arg_array;
 
-	arg_arr = data->argv;
-	_puts("Function not yet implemented \n");
+	arg_array = data->argv;
+	_puts("help call works. Function not yet implemented \n");
 	if (0)
-		_puts(*arg_arr);
+		_puts(*arg_array);
 	return (0);
 }
