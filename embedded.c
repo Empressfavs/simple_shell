@@ -44,9 +44,9 @@ int _cd(data_t *data)
 	{
 		direct = _getenv(data, "HOME=");
 		if (!direct)
-			ch_dir = ch_direct((direct = _getenv(info, "PWD=")) ? direct : "/");
+			ch_dir = chdir((direct = _getenv(info, "PWD=")) ? direct : "/");
 		else
-			ch_dir = ch_direct(direct);
+			ch_dir = chdir(direct);
 	}
 	else if (_strcmp(data->argv[1], "-") == 0)
 	{
@@ -57,10 +57,10 @@ int _cd(data_t *data)
 			return (1);
 		}
 		_puts(_getenv(data, "OLDPWD=")), _putchar('\n');
-		ch_dir = ch_direct((direct = _getenv(data, "OLDPWD=")) ? direct : "/");
+		ch_dir = chdir((direct = _getenv(data, "OLDPWD=")) ? direct : "/");
 	}
 	else
-		ch_dir = ch_direct(data->argv[1]);
+		ch_dir = chdir(data->argv[1]);
 	if (ch_dir == -1)
 	{
 		print_error(data, "can't cd to ");

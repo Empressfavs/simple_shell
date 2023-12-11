@@ -173,6 +173,12 @@ int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
+/* print_error.c */
+void _eputs(char *str);
+int _eputchar(char c);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
+
 /* embedded.c */
 int _exit(data_t *data);
 int _cd(data_t *data);
@@ -195,12 +201,12 @@ void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
-/* toem_environ.c */
-char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
+/* environment.c */
+int _environment(data_t *data);
+char *_getenviron(data_t *data, const char *name);
+int _setenviron(data_t *data);
+int _unsetenviron(data_t *data);
+int pop_env_list(data_t *data);
 
 /* toem_getenv.c */
 char **get_environ(info_t *);
