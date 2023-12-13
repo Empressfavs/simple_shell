@@ -29,7 +29,7 @@ int unset_alias(info_t *data, char *str)
 	c = *s;
 	*s = 0;
 	cha = delete_node(&(data->alias),
-		node_index(data->alias, starts_with(data->alias, str, -1)));
+		node_index(data->alias, node_starts_with(data->alias, str, -1)));
 	*s = c;
 	return (cha);
 }
@@ -105,7 +105,7 @@ int _alias(info_t *data)
 		if (s)
 			set_alias(data, data->argv[i]);
 		else
-			print_alias(starts_with(data->alias, data->argv[i], '='));
+			print_alias(node_starts_with(data->alias, data->argv[i], '='));
 	}
 
 	return (0);
