@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * _history - displays the history list, one command by line
+ * _myhistory - displays the history list, one command by line
  * @data: ContainS arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _history(info_t *data)
+int _myhistory(info_t *data)
 {
 	print_list(data->history);
 	return (0);

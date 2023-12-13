@@ -50,7 +50,7 @@ void set_inf(info_t *inf, char **arv)
  * @eve: true if freeing every fields
  */
 void free_info(info_t *info, int eve)
-{i
+{
 	ffree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
@@ -59,11 +59,11 @@ void free_info(info_t *info, int eve)
 		if (!info->cmd_buf)
 			free(info->arg);
 		if (info->env)
-			free_list(&(info->env));
+			free_node(&(info->env));
 		if (info->history)
-			free_list(&(info->history));
+			free_node(&(info->history));
 		if (info->alias)
-			free_list(&(info->alias));
+			free_node(&(info->alias));
 		ffree(info->environ);
 			info->environ = NULL;
 		ffree((void **)info->cmd_buf);
