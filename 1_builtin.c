@@ -105,7 +105,7 @@ int _alias(info_t *data)
 		if (s)
 			set_alias(data, data->argv[i]);
 		else
-			print_alias(node_starts_with(data->alias, data->argv[i], '='));
+			print_alias(starts_with(data->alias, data->argv[i], '='));
 	}
 
 	return (0);
