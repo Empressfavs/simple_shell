@@ -176,11 +176,11 @@ void set_inf(info_t *inf, char **arv);
 void free_info(info_t *info, int eve);
 
 /* environment.c */
-int _environment(info_t *data);
-char *_getenviron(info_t *data, const char *name);
-int _setenviron(info_t *data);
-int _unsetenviron(info_t *data);
-int pop_env_list(info_t *data);
+int _environment(info_t *info);
+char *_getenviron(info_t *info, const char *name);
+int _setenviron(info_t *info);
+int _unsetenviron(info_t *info);
+int pop_env_list(info_t *info);
 
 /* env.c */
 char **get_env(info_t *inf);
