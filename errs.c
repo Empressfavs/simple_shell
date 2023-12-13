@@ -29,18 +29,18 @@ int err_atoi(char *s)
 
 /**
  * display_err - prints an error message
- * @inf: the parameter & return info struct
+ * @info: the parameter & return info struct
  * @errstr: string containing specified error type
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
-void display_err(info_t *inf, char *errstr)
+void display_err(info_t *info, char *errstr)
 {
-	_eputs(inf->fname);
+	_eputs(info->fname);
 	_eputs(": ");
-	display_p(inf->line_count, STDERR_FILENO);
+	display_p(info->line_count, STDERR_FILENO);
 	_eputs(": ");
-	_eputs(inf->argv[0]);
+	_eputs(info->argv[0]);
 	_eputs(": ");
 	_eputs(errstr);
 }
@@ -48,17 +48,16 @@ void display_err(info_t *inf, char *errstr)
 /**
  * display_p - function prints a decimal (integer) number (base 10)
  * @input: the input
- * @f: the filedescriptor to write to
- *
+ * @fd: the filedescriptor to write to
  * Return: number of characters printed
  */
-int display_p(int input, int f)
+int display_p(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
 	int l, len = 0;
 	unsigned int _abs_, new;
 
-	if (f == STDERR_FILENO)
+	if (fd == STDERR_FILENO)
 		__putchar = _eputchar;
 	if (input < 0)
 	{
@@ -85,7 +84,7 @@ int display_p(int input, int f)
 }
 
 /**
- * convert_number - converter function, a clone of itoa
+ * convert_num - converter function, a clone of itoa
  * @num: number
  * @base: base
  * @flags: argument flags

@@ -2,18 +2,18 @@
 
 /**
  * get_env - returns the string array copy of our environ
- * @inf: Contains arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype.
  * Return: Always 0
  */
-char **get_env(info_t *inf)
+char **get_env(info_t *info)
 {
-	if (!inf->environ || inf->env_changed)
+	if (!info->environ || info->env_changed)
 	{
-		inf->environ = list_str(inf->env);
-		inf->env_changed = 0;
+		info->environ = list_str(inf->env);
+		info->env_changed = 0;
 	}
 
-	return (inf->environ);
+	return (info->environ);
 }
 
 /**
