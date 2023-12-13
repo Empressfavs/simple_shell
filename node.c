@@ -99,9 +99,10 @@ size_t print_str(const list_t *l)
  * Return: 1 on success, 0 on failure
  */
 int delete_node(list_t **head, unsigned int ind)
-
+{
 	list_t *node, *prev_node;
 	unsigned int i = 0;
+
 
 	if (!head || !*head)
 		return (0);
