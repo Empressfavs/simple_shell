@@ -31,7 +31,7 @@ void set_inf(info_t *inf, char **arv)
 			inf->argv = malloc(sizeof(char *) * 2);
 			if (inf->argv)
 			{
-				inf->argv[0] = _strdup(inf->arg);
+				inf->argv[0] = _strdupli(inf->arg);
 				inf->argv[1] = NULL;
 			}
 		}
@@ -39,36 +39,36 @@ void set_inf(info_t *inf, char **arv)
 			;
 		inf->argc = i;
 
-		replace_alias(inf);
-		replace_vars(inf);
+		rep_alias(inf);
+		rep_vars(inf);
 	}
 }
 
 /**
  * free_info - frees info_t
- * @inf: struct address
+ * @info: struct address
  * @eve: true if freeing every fields
  */
-void free_info(info_t *inf, int eve)
-{
-	ffree(inf->argv);
-	inf->argv = NULL;
-	inf->path = NULL;
+void free_info(info_t *info, int eve)
+{i
+	ffree(info->argv);
+	info->argv = NULL;
+	info->path = NULL;
 	if (eve)
 	{
-		if (!inf->cmd_buf)
-			free(inf->arg);
-		if (inf->env)
-			free_list(&(inf->env));
-		if (inf->history)
-			free_list(&(inf->history));
-		if (inf->alias)
-			free_list(&(inf->alias));
-		ffree(inf->environ);
-			inf->environ = NULL;
-		bfree((void **)inf->cmd_buf);
-		if (inf->readfd > 2)
-			close(inf->readfd);
+		if (!info->cmd_buf)
+			free(info->arg);
+		if (info->env)
+			free_list(&(info->env));
+		if (info->history)
+			free_list(&(info->history));
+		if (info->alias)
+			free_list(&(info->alias));
+		ffree(info->environ);
+			info->environ = NULL;
+		ffree((void **)info->cmd_buf);
+		if (info->readfd > 2)
+			close(info->readfd);
 		_putchar(BUF_FLUSH);
 	}
 }

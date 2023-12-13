@@ -52,12 +52,12 @@ int find_builtin(info_t *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", _exit},
-		{"env", _env},
-		{"help", _myhelp},
+		{"exit", _ourexit},
+		{"env", _environment},
+		{"help", _chcur},
 		{"history", _history},
-		{"setenv", _setenv},
-		{"unsetenv", _unsetenv},
+		{"setenv", _setenviron},
+		{"unsetenv", _unsetenviron},
 		{"cd", _ourcd},
 		{"alias", _alias},
 		{NULL, NULL}
@@ -95,7 +95,7 @@ void find_cmd(info_t *info)
 	if (!k)
 		return;
 
-	path = find_path(info, _env(info, "PATH="), info->argv[0]);
+	path = find_path(info, _environment(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;

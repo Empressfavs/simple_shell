@@ -55,21 +55,21 @@ int _unsetenv(info_t *inf, char *var)
  * @val: the string environment variable value
  *  Return: Always 0
  */
-int _setenv(info_t *inf, char *var, char *val)
+int _setenv(info_t *inf, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
 	char *c;
 
-	if (!var || !val)
+	if (!var || !value)
 		return (0);
 
-	buf = malloc(_str_len(var) + _str_len(val) + 2);
+	buf = malloc(_str_len(var) + _str_len(value) + 2);
 	if (!buf)
 		return (1);
 	_str_cpy(buf, var);
 	_str_cat(buf, "=");
-	_str_cat(buf, val);
+	_str_cat(buf, value);
 	node = inf->env;
 	while (node)
 	{

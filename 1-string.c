@@ -39,7 +39,7 @@ char *_strdupli(const char *str)
 	while (*str++)
 		len++;
 	p = malloc(sizeof(char) * (len + 1));
-	if (!ret)
+	if (!p)
 		return (NULL);
 	for (len++; len--;)
 		p[len] = *--str;

@@ -40,14 +40,14 @@ int _eputchar(char c)
 }
 
 /**
- * _putek - writes the character c to given ek
+ * _putfd - writes the character c to given ek
  * @c:  The character to print
  * @ek: The filedescriptor to write to
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putek(char c, int ek)
+int _putfd(char c, int ek)
 {
 	static int loop;
 	static char buf[WRITE_BUF_SIZE];
@@ -63,13 +63,13 @@ int _putek(char c, int ek)
 }
 
 /**
- *_putsek - prints an input string
+ *_putsfd - prints an input string
  * @str: the string to be printed
  * @ek: the filedescriptor to write to
  *
  * Return: the number of chars put
  */
-int _putsek(char *str, int ek)
+int _putsfd(char *str, int ek)
 {
 	int loop = 0;
 
@@ -77,7 +77,7 @@ int _putsek(char *str, int ek)
 		return (0);
 	while (*str)
 	{
-		loop += _putek(*str++, ek);
+		loop += _putfd(*str++, ek);
 	}
 	return (loop);
 }

@@ -12,7 +12,7 @@ int _ourexit(info_t *data)
 
 	if (data->argv[1])
 	{
-		exitcheck = _errtrum(data->argv[1]);
+		exitcheck = err_atoi(data->argv[1]);
 		if (exitcheck == -1)
 		{
 			data->status = 2;
@@ -21,7 +21,7 @@ int _ourexit(info_t *data)
 			_eputchar('\n');
 			return (1);
 		}
-		data->err_num = _errtrum(data->argv[1]);
+		data->err_num = err_atoi(data->argv[1]);
 		return (-2);
 	}
 	data->err_num = -1;
@@ -43,33 +43,33 @@ int _ourcd(info_t *data)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!data->argv[1])
 	{
-		direct = _getenv(data, "HOME=");
+		direct = _getenviron(data, "HOME=");
 		if (!direct)
-			ch_dir = chdir((direct = _getenv(data, "PWD=")) ? direct : "/");
+			ch_dir = chdir((direct = _getenviron(data, "PWD=")) ? direct : "/");
 		else
 			ch_dir = chdir(direct);
 	}
-	else if (_strcmp(data->argv[1], "-") == 0)
+	else if (_str_cmp(data->argv[1], "-") == 0)
 	{
-		if (!_getenv(data, "OLDPWD="))
+		if (!_getenviron(data, "OLDPWD="))
 		{
 			_puts(c);
 			_putchar('\n');
 			return (1);
 		}
-		_puts(_getenv(data, "OLDPWD=")), _putchar('\n');
-		ch_dir = chdir((direct = _getenv(data, "OLDPWD=")) ? direct : "/");
+		_puts(_getenviron(data, "OLDPWD=")), _putchar('\n');
+		ch_dir = chdir((direct = _getenviron(data, "OLDPWD=")) ? direct : "/");
 	}
 	else
 		ch_dir = chdir(data->argv[1]);
 	if (ch_dir == -1)
 	{
-		print_error(data, "can't cd to ");
+		display_err(data, "can't cd to ");
 		_eputs(data->argv[1]), _eputchar('\n');
 	}
 	else
 	{
-		_setenv(data, "OLDPWD", _getenv(data, "PWD="));
+		_setenv(data, "OLDPWD", _getenviron(data, "PWD="));
 		_setenv(data, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);

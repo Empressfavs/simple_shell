@@ -20,7 +20,7 @@ ssize_t input_buff(info_t *inf, char **buff, size_t *len)
 #if USE_GETLINE
 		t = getline(buff, &len_t, stdin);
 #else
-		t = _getline(inf, buff, &len_t);
+		t = _line(inf, buff, &len_t);
 #endif
 		if (t > 0)
 		{
@@ -30,8 +30,8 @@ ssize_t input_buff(info_t *inf, char **buff, size_t *len)
 				t--;
 			}
 			inf->linecount_flag = 1;
-			remove_comments(*buff);
-			build_history_list(inf, *buff, inf->histcount++);
+			rem_comments(*buff);
+			history_list(inf, *buff, inf->histcount++);
 			{
 				*len = t;
 				inf->cmd_buf = buff;
@@ -55,7 +55,7 @@ ssize_t _input(info_t *inf)
 	char **buf_f = &(inf->arg), *c;
 
 	_putchar(BUF_FLUSH);
-	t = input_buf(inf, &buff, &len);
+	t = input_buff(inf, &buff, &len);
 	if (t == -1)
 		return (-1);
 	if (len)
@@ -79,7 +79,7 @@ ssize_t _input(info_t *inf)
 		}
 
 		*buf_f = c;
-		return (_strlen(c));
+		return (_str_len(c));
 	}
 
 	*buf_f = buff;
@@ -124,26 +124,26 @@ int _line(info_t *info, char **ptr, size_t *length)
 	p = *ptr;
 	if (p && length)
 		s = *length;
-	if (i == len)
-		i = len = 0;
+	if (t == len)
+		t = len = 0;
 
 	r = read_buf(info, buf, &len);
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 
-	c = _strchr(buf + i, '\n');
+	c = _strchr(buf + t, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
-	new_p = _realloc(p, s, s ? s + k : k + 1);
+	new_p = _reallocate(p, s, s ? s + k : k + 1);
 	if (!new_p) /* MALLOC FAILURE! */
 		return (p ? free(p), -1 : -1);
 
 	if (s)
-		_strncat(new_p, buf + i, k - i);
+		_strncat(new_p, buf + t, k - t);
 	else
-		_strncpy(new_p, buf + i, k - i + 1);
+		_strncpy(new_p, buf + t, k - t + 1);
 
-	s += k - i;
-	i = k;
+	s += k - t;
+	t = k;
 	p = new_p;
 
 	if (length)

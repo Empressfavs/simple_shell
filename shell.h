@@ -106,8 +106,8 @@ int loophsh(char **);
 /* err.c */
 void _eputs(char *str);
 int _eputchar(char c);
-int _putek(char c, int ek);
-int _putsek(char *str, int ek);
+int _putfd(char c, int ek);
+int _putsfd(char *str, int ek);
 
 /* 0-string.c */
 int _str_len(char *s);
@@ -170,7 +170,7 @@ void sigintHandler(__attribute__((unused))int sig_num);
 /* info.c */
 void clear_inf(info_t *inf);
 void set_inf(info_t *inf, char **arv);
-void free_info(info_t *inf, int eve);
+void free_info(info_t *info, int eve);
 
 /* environment.c */
 int _environment(info_t *data);
@@ -182,7 +182,7 @@ int pop_env_list(info_t *data);
 /* env.c */
 char **get_env(info_t *inf);
 int _unsetenv(info_t *inf, char *var);
-int _setenv(info_t *inf, char *var, char *val);
+int _setenv(info_t *inf, char *var, char *value);
 
 /* history.c */
 char *history_file(info_t *info);
