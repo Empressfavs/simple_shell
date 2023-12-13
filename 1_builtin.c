@@ -5,9 +5,9 @@
  * @data: ContainS arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _myhistory(info_t *data)
+int _myhistory(info_t *info)
 {
-	print_list(data->history);
+	print_list(info->history);
 	return (0);
 }
 
