@@ -2,38 +2,38 @@
 
 /**
  * _ourexit - exits the shell
- * @data: Contains potential arguments used to maintain constant function prototype.
+ * @info: Contains potential arguments used to maintain function prototype.
  *  Return: exits with a given exit status
  *         (0) if info.argv[0] != "exit"
  */
-int _ourexit(info_t *data)
+int _ourexit(info_t *info)
 {
 	int exitcheck;
 
-	if (data->argv[1])
+	if (info->argv[1])
 	{
-		exitcheck = err_atoi(data->argv[1]);
+		exitcheck = err_atoi(info->argv[1]);
 		if (exitcheck == -1)
 		{
-			data->status = 2;
-			display_err(data, "Invalid number: ");
-			_eputs(data->argv[1]);
+			info->status = 2;
+			display_err(info, "Invalid number: ");
+			_eputs(info->argv[1]);
 			_eputchar('\n');
 			return (1);
 		}
-		data->err_num = err_atoi(data->argv[1]);
+		info->err_num = err_atoi(info->argv[1]);
 		return (-2);
 	}
-	data->err_num = -1;
+	info->err_num = -1;
 	return (-2);
 }
 
 /**
  * _ourcd - change the current directory of the process
- * @data: Contains potential arguments used to maintain constant function prototype.
+ * @info: Contains potential arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _ourcd(info_t *data)
+int _ourcd(info_t *info)
 {
 	char *c, *direct, buffer[1024];
 	int ch_dir;
@@ -41,50 +41,50 @@ int _ourcd(info_t *data)
 	c = getcwd(buffer, 1024);
 	if (!c)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
-	if (!data->argv[1])
+	if (!info->argv[1])
 	{
-		direct = _getenviron(data, "HOME=");
+		direct = _getenviron(info, "HOME=");
 		if (!direct)
-			ch_dir = chdir((direct = _getenviron(data, "PWD=")) ? direct : "/");
+			ch_dir = chdir((direct = _getenviron(info, "PWD=")) ? direct : "/");
 		else
 			ch_dir = chdir(direct);
 	}
-	else if (_str_cmp(data->argv[1], "-") == 0)
+	else if (_str_cmp(info->argv[1], "-") == 0)
 	{
-		if (!_getenviron(data, "OLDPWD="))
+		if (!_getenviron(info, "OLDPWD="))
 		{
 			_puts(c);
 			_putchar('\n');
 			return (1);
 		}
-		_puts(_getenviron(data, "OLDPWD=")), _putchar('\n');
+		_puts(_getenviron(info, "OLDPWD=")), _putchar('\n');
 		ch_dir = chdir((direct = _getenviron(data, "OLDPWD=")) ? direct : "/");
 	}
 	else
-		ch_dir = chdir(data->argv[1]);
+		ch_dir = chdir(info->argv[1]);
 	if (ch_dir == -1)
 	{
 		display_err(data, "can't cd to ");
-		_eputs(data->argv[1]), _eputchar('\n');
+		_eputs(info->argv[1]), _eputchar('\n');
 	}
 	else
 	{
-		_setenv(data, "OLDPWD", _getenviron(data, "PWD="));
-		_setenv(data, "PWD", getcwd(buffer, 1024));
+		_setenv(info, "OLDPWD", _getenviron(info, "PWD="));
+		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }
 
 /**
  * _chcur - changes the current directory of the process
- * @data: Contains potential arguments used to maintain constant function prototype.
+ * @info: Contains potential arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _chcur(info_t *data)
+int _chcur(info_t *info)
 {
 	char **arg_array;
 
-	arg_array = data->argv;
+	arg_array = info->argv;
 	_puts("help call works. Function not yet implemented \n");
 	if (0)
 		_puts(*arg_array);
