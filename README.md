@@ -1,4 +1,3 @@
-This README provides an overview of the "Simple Shell" project, including its purpose, functionalities, and implementation details.
 
 Table of Contents:
 
@@ -64,6 +63,4 @@ Command chaining with pipes:
 ls | grep file
 ps | grep process_name
 Background processes:
-make clean &
-sleep 10 &
 This is a simple shell project done by Avwopiabro Favour and Eweje Kabiru
