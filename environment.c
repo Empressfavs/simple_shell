@@ -2,24 +2,24 @@
 
 /**
  * _environment - prints the current environment
- * @data: Contains arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype.
  * Return: Always 0
  */
-int _environment(info_t *data)
+int _environment(info_t *info)
 {
-	print_list(data->env);
+	print_list(info->env);
 	return (0);
 }
 
 /**
  * _getenviron - gets the value of an environment variable
- * @data: Contains arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype.
  * @name: environment variable name
  * Return: the value
  */
-char *_getenviron(info_t *data, const char *name)
+char *_getenviron(info_t *info, const char *name)
 {
-	list_t *node = data->env;
+	list_t *node = info->env;
 	char *s;
 
 	while (node)
@@ -34,47 +34,47 @@ char *_getenviron(info_t *data, const char *name)
 
 /**
  * _setenviron - Initialize a new environment variable or modify an existing one
- * @data: Contains potential arguments used to maintain constant function prototype.
+ * @info: Contains potential arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _setenviron(info_t *data)
+int _setenviron(info_t *info)
 {
-	if (data->argc != 3)
+	if (info->argc != 3)
 	{
 		_eputs("Incorrect number of arguements\n");
 		return (1);
 	}
-	if (_setenv(data, data->argv[1], data->argv[2]))
+	if (_setenv(info, info->argv[1], info->argv[2]))
 		return (0);
 	return (1);
 }
 
 /**
  * _unsetenviron - Remove an environment variable
- * @data: Contains arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _unsetenviron(info_t *data)
+int _unsetenviron(info_t *info)
 {
 	int i;
 
-	if (data->argc == 1)
+	if (info->argc == 1)
 	{
 		_eputs("Too few arguements.\n");
 		return (1);
 	}
-	for (i = 1; i <= data->argc; i++)
-		_unsetenv(data, data->argv[i]);
+	for (i = 1; i <= info->argc; i++)
+		_unsetenv(info, info->argv[i]);
 
 	return (0);
 }
 
 /**
  * pop_env_list - populates environment linked list
- * @data: Contains arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype.
  * Return: Always 0
  */
-int pop_env_list(info_t *data)
+int pop_env_list(info_t *info)
 {
 	list_t *node = NULL;
 	size_t i;
@@ -82,7 +82,7 @@ int pop_env_list(info_t *data)
 	for (i = 0; environ[i]; i++)
 	{
 		add_node(&node, environ[i], 0);
-	data->env = node;
+	info->env = node;
 	}
 	return (0);
 }
