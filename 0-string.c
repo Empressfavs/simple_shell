@@ -41,17 +41,17 @@ int _str_cmp(char *str1, char *str2)
 }
 
 /**
- * starts_with - checks if needle starts with ser
- * @ser: string to search
- * @fin: the substring to find
+ * starts_with - checks if needle starts with haystack
+ * @haystack: string to search
+ * @needle: the substring to find
  * Return: address of next char of ser or NULL
  */
-char *starts_with(const char *ser, const char *fin)
+char *starts_with(const char *haystack, const char *needle)
 {
-	while (*fin)
-		if (*fin++ != *ser++)
+	while (*needle)
+		if (*needle++ != *haystack++)
 			return (NULL);
-	return ((char *)ser);
+	return ((char *)haystack);
 }
 
 /**

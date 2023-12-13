@@ -112,7 +112,7 @@ int _putsfd(char *str, int ek);
 /* 0-string.c */
 int _str_len(char *s);
 int _str_cmp(char *str1, char *str2);
-char *starts_with(const char *ser, const char *fin);
+char *starts_with(const char *haystack, const char *needle);
 char *_str_cat(char *dest, char *src);
 
 /* 1-string.c */
