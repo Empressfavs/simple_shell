@@ -47,8 +47,7 @@ char *duplicate_char(char *pathstr, int start, int stop)
  * @data: the info struct
  * @pathstr: the PATH string
  * @cmd: the cmd to find
- *
-int is_command(info_t *data, char *path) * Return: full path of cmd if found or NULL
+ * Return: full path of cmd if found or NULL
  */
 char *find_path(info_t *data, char *pathstr, char *cmd)
 {
