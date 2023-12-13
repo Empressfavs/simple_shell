@@ -61,7 +61,7 @@ int _trum(char *d)
 			outcome *= 10;
 			outcome += (d[i] - '0');
 		}
-		else if (flag == 1)
+		else if (tag == 1)
 			tag = 2;
 	}
 

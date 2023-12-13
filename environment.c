@@ -7,7 +7,7 @@
  */
 int _environment(info_t *data)
 {
-	print_list_str(data->env);
+	print_list(data->env);
 	return (0);
 }
 
@@ -81,7 +81,7 @@ int pop_env_list(info_t *data)
 
 	for (i = 0; environ[i]; i++)
 	{
-		add_node_end(&node, environ[i], 0);
+		add_node(&node, environ[i], 0);
 	data->env = node;
 	}
 	return (0);

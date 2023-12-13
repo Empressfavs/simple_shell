@@ -9,7 +9,7 @@ char **get_env(info_t *inf)
 {
 	if (!inf->environ || inf->env_changed)
 	{
-		inf->environ = list_to_strings(inf->env);
+		inf->environ = list_str(inf->env);
 		inf->env_changed = 0;
 	}
 
@@ -33,10 +33,10 @@ int _unsetenv(info_t *inf, char *var)
 
 	while (node)
 	{
-		p = starts_with(node->str, var);
-		if (p && *p == '=')
+		c = starts_with(node->str, var);
+		if (c && *c == '=')
 		{
-			inf->env_changed = delete_node_at_index(&(inf->env), t);
+			inf->env_changed = delete_node(&(inf->env), t);
 			t = 0;
 			node = inf->env;
 			continue;
@@ -64,12 +64,12 @@ int _setenv(info_t *inf, char *var, char *val)
 	if (!var || !val)
 		return (0);
 
-	buf = malloc(_strlen(var) + _strlen(val) + 2);
+	buf = malloc(_str_len(var) + _str_len(val) + 2);
 	if (!buf)
 		return (1);
-	_strcpy(buf, var);
-	_strcat(buf, "=");
-	_strcat(buf, val);
+	_str_cpy(buf, var);
+	_str_cat(buf, "=");
+	_str_cat(buf, val);
 	node = inf->env;
 	while (node)
 	{
@@ -83,7 +83,7 @@ int _setenv(info_t *inf, char *var, char *val)
 		}
 		node = node->next;
 	}
-	add_node_end(&(inf->env), buf, 0);
+	add_node(&(inf->env), buf, 0);
 	free(buf);
 	inf->env_changed = 1;
 	return (0);

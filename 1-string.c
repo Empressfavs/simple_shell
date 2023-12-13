@@ -4,7 +4,6 @@
  * _str_cpy - copies a string
  * @dest: the destination
  * @src: the source
- *
  * Return: pointer to destination
  */
 char *_str_cpy(char *dest, char *src)
@@ -23,7 +22,7 @@ char *_str_cpy(char *dest, char *src)
 }
 
 /**
- * _str_dupli - duplicates a string
+ * _strdupli - duplicates a string
  * @str: the string to duplicate
  *
  * Return: pointer to the duplicated string
@@ -69,21 +68,20 @@ void _puts(char *str)
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
- *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char char)
+int _putchar(char c)
 {
 	static int j;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (char == BUF_FLUSH || j >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || j >= WRITE_BUF_SIZE)
 	{
 		write(1, buf, j);
 		j = 0;
 	}
-	if (char != BUF_FLUSH)
-		buf[j++] = char;
+	if (c != BUF_FLUSH)
+		buf[j++] = c;
 	return (1);
 }

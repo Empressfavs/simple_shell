@@ -7,7 +7,7 @@
  *
  * Return: 1 if true, 0 otherwise
  */
-int is_command(data_t *ata, char *path)
+int is_command(info_t *data, char *path)
 {
 	struct stat st;
 
@@ -48,33 +48,33 @@ char *duplicate_char(char *pathstr, int start, int stop)
  * @pathstr: the PATH string
  * @cmd: the cmd to find
  *
- * Return: full path of cmd if found or NULL
+int is_command(info_t *data, char *path) * Return: full path of cmd if found or NULL
  */
-char *find_path(data_t *data, char *pathstr, char *cmd)
+char *find_path(info_t *data, char *pathstr, char *cmd)
 {
 	int i = 0, curr_pos = 0;
 	char *path;
 
 	if (!pathstr)
 		return (NULL);
-	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
+	if ((_str_len(cmd) > 2) && starts_with(cmd, "./"))
 	{
-		if (is_cmd(data, cmd))
+		if (is_command(data, cmd))
 			return (cmd);
 	}
 	while (1)
 	{
 		if (!pathstr[i] || pathstr[i] == ':')
 		{
-			path = dup_chars(pathstr, curr_pos, i);
+			path = duplicate_char(pathstr, curr_pos, i);
 			if (!*path)
-				_strcat(path, cmd);
+				_str_cat(path, cmd);
 			else
 			{
-				_strcat(path, "/");
-				_strcat(path, cmd);
+				_str_cat(path, "/");
+				_str_cat(path, cmd);
 			}
-			if (is_cmd(data, path))
+			if (is_command(data, path))
 				return (path);
 			if (!pathstr[i])
 				break;

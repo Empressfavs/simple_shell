@@ -28,7 +28,7 @@ int err_atoi(char *s)
 }
 
 /**
- * print_error - prints an error message
+ * display_err - prints an error message
  * @inf: the parameter & return info struct
  * @errstr: string containing specified error type
  * Return: 0 if no numbers in string, converted number otherwise
@@ -38,7 +38,7 @@ void display_err(info_t *inf, char *errstr)
 {
 	_eputs(inf->fname);
 	_eputs(": ");
-	print_d(inf->line_count, STDERR_FILENO);
+	display_p(inf->line_count, STDERR_FILENO);
 	_eputs(": ");
 	_eputs(inf->argv[0]);
 	_eputs(": ");
@@ -46,7 +46,7 @@ void display_err(info_t *inf, char *errstr)
 }
 
 /**
- * print_d - function prints a decimal (integer) number (base 10)
+ * display_p - function prints a decimal (integer) number (base 10)
  * @input: the input
  * @f: the filedescriptor to write to
  *

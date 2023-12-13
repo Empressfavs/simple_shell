@@ -28,8 +28,8 @@ int unset_alias(info_t *data, char *str)
 		return (1);
 	c = *s;
 	*s = 0;
-	cha = delete_node_at_index(&(data->alias),
-		get_node_index(data->alias, node_starts_with(data->alias, str, -1)));
+	cha = delete_node(&(data->alias),
+		node_index(data->alias, starts_with(data->alias, str, -1)));
 	*s = c;
 	return (cha);
 }
@@ -52,7 +52,7 @@ int set_alias(info_t *data, char *str)
 		return (unset_alias(data, str));
 
 	unset_alias(data, str);
-	return (add_node_end(&(data->alias), str, 0) == NULL);
+	return (add_node(&(data->alias), str, 0) == NULL);
 }
 
 /**

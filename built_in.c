@@ -16,7 +16,7 @@ int _ourexit(info_t *data)
 		if (exitcheck == -1)
 		{
 			data->status = 2;
-			print_error(data, "Invalid number: ");
+			display_err(data, "Invalid number: ");
 			_eputs(data->argv[1]);
 			_eputchar('\n');
 			return (1);
@@ -38,8 +38,8 @@ int _ourcd(info_t *data)
 	char *c, *direct, buffer[1024];
 	int ch_dir;
 
-	s = getcwd(buffer, 1024);
-	if (!s)
+	c = getcwd(buffer, 1024);
+	if (!c)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!data->argv[1])
 	{
@@ -53,7 +53,7 @@ int _ourcd(info_t *data)
 	{
 		if (!_getenv(data, "OLDPWD="))
 		{
-			_puts(s);
+			_puts(c);
 			_putchar('\n');
 			return (1);
 		}
