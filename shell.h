@@ -157,6 +157,9 @@ int _ourcd(info_t *data);
 int _chcur(info_t *data);
 
 /* 1_builtin.c */
+int _myhistory(info_t *data);
+int set_alias(info_t *data, char *str);
+int unset_alias(info_t *data, char *str);
 int _alias(info_t *data);
 int print_alias(list_t *node);
 
@@ -202,7 +205,7 @@ void free_node(list_t **head_ptr);
 size_t list_len(const list_t *n);
 char **list_str(list_t *head);
 size_t print_list(const list_t *n);
-list_t *pre_node(list_t *node, char *pre, char c);
+list_t *node_starts_with(list_t *node, char *pre, char c);
 ssize_t node_index(list_t *head, list_t *node);
 
 /* chain.c */
