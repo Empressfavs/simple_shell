@@ -84,7 +84,6 @@ size_t print_list(const list_t *n)
  */
 list_t *node_starts_with(list_t *node, char *pre, char c)
 {
-	char *p = NULL;
 
 	while (node)
 	{

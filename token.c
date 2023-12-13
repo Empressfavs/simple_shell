@@ -46,7 +46,6 @@ char **strtow(char *str, char *d)
 	}
 	s[j] = NULL;
 	return (s);
-}
 
 /**
  * **strtow2 - splits a string into words
