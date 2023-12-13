@@ -30,7 +30,7 @@ int _ourexit(info_t *info)
 
 /**
  * _ourcd - change the current directory of the process
- * @info: Contains potential arguments used to maintain constant function prototype.
+ * @info: Contains potential arguments used to maintain constant prototype.
  *  Return: Always 0
  */
 int _ourcd(info_t *info)
@@ -77,7 +77,7 @@ int _ourcd(info_t *info)
 
 /**
  * _chcur - changes the current directory of the process
- * @info: Contains potential arguments used to maintain constant function prototype.
+ * @info: Contains potential arguments used to maintain constant prototype.
  *  Return: Always 0
  */
 int _chcur(info_t *info)
