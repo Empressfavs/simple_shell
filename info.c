@@ -51,7 +51,7 @@ void set_inf(info_t *inf, char **arv)
  */
 void free_info(info_t *info, int eve)
 {
-	ffree(info->argv);
+	_free(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
 	if (eve)
@@ -64,12 +64,11 @@ void free_info(info_t *info, int eve)
 			free_node(&(info->history));
 		if (info->alias)
 			free_node(&(info->alias));
-		ffree(info->environ);
+		_free(info->environ);
 			info->environ = NULL;
-		ffree((void **)info->cmd_buf);
+		mfree((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);
 		_putchar(BUF_FLUSH);
 	}
 }
-

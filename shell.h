@@ -136,7 +136,7 @@ void _free(char **ss);
 void *_reallocate(void *ptr, unsigned int prev_size, unsigned int new_size);
 
 /* mem.c */
-int ffree(void **ptr);
+int mfree(void **ptr);
 
 /* trum.c */
 int interact(info_t *data);
