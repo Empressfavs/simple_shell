@@ -9,11 +9,7 @@ char **get_env(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
-<<<<<<< HEAD
-		info->environ = list_str(inf->env);
-=======
 		info->environ = list_str(info->env);
->>>>>>> 84eefc18a4b9afdc660e6b233d3acac7ea513ff8
 		info->env_changed = 0;
 	}
 
