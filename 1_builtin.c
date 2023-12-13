@@ -2,7 +2,7 @@
 
 /**
  * _myhistory - displays the history list, one command by line
- * @data: ContainS arguments used to maintain constant function prototype.
+ * @info: ContainS arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
 int _myhistory(info_t *info)
@@ -13,12 +13,12 @@ int _myhistory(info_t *info)
 
 /**
  * unset_alias - unset alias from string
- * @data: struct parameter
+ * @info: struct parameter
  * @str: the string alias
  *
  * Return: Always 0 on success or 1 on error
  */
-int unset_alias(info_t *data, char *str)
+int unset_alias(info_t *info, char *str)
 {
 	char *s, c;
 	int cha;
@@ -28,20 +28,20 @@ int unset_alias(info_t *data, char *str)
 		return (1);
 	c = *s;
 	*s = 0;
-	cha = delete_node(&(data->alias),
-		node_index(data->alias, node_starts_with(data->alias, str, -1)));
+	cha = delete_node(&(info->alias),
+		node_index(info->alias, node_starts_with(info->alias, str, -1)));
 	*s = c;
 	return (cha);
 }
 
 /**
  * set_alias - sets alias to string
- * @data: parameter struct
+ * @info: parameter struct
  * @str: the string alias
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(info_t *data, char *str)
+int set_alias(info_t *info, char *str)
 {
 	char *s;
 
@@ -49,10 +49,10 @@ int set_alias(info_t *data, char *str)
 	if (!s)
 		return (1);
 	if (!*++s)
-		return (unset_alias(data, str));
+		return (unset_alias(info, str));
 
-	unset_alias(data, str);
-	return (add_node(&(data->alias), str, 0) == NULL);
+	unset_alias(info, str);
+	return (add_node(&(info->alias), str, 0) == NULL);
 }
 
 /**
@@ -80,18 +80,18 @@ int print_alias(list_t *node)
 
 /**
  * _alias - man alias
- * @data: Contains arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
-int _alias(info_t *data)
+int _alias(info_t *info)
 {
 	int i = 0;
 	char *s = NULL;
 	list_t *node = NULL;
 
-	if (data->argc == 1)
+	if (info->argc == 1)
 	{
-		node = data->alias;
+		node = info->alias;
 		while (node)
 		{
 			print_alias(node);
@@ -99,13 +99,13 @@ int _alias(info_t *data)
 		}
 		return (0);
 	}
-	for (i = 1; data->argv[i]; i++)
+	for (i = 1; info->argv[i]; i++)
 	{
-		s = _strchr(data->argv[i], '=');
+		s = _strchr(info->argv[i], '=');
 		if (s)
-			set_alias(data, data->argv[i]);
+			set_alias(info, info->argv[i]);
 		else
-			print_alias(node_starts_with(data->alias, data->argv[i], '='));
+			print_alias(node_starts_with(info->alias, info->argv[i], '='));
 	}
 
 	return (0);

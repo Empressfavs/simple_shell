@@ -106,8 +106,8 @@ int loophsh(char **);
 /* err.c */
 void _eputs(char *str);
 int _eputchar(char c);
-int _putfd(char c, int ek);
-int _putsfd(char *str, int ek);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
 
 /* 0-string.c */
 int _str_len(char *s);
@@ -139,7 +139,7 @@ void *_reallocate(void *ptr, unsigned int prev_size, unsigned int new_size);
 int mfree(void **ptr);
 
 /* trum.c */
-int interact(info_t *data);
+int interact(info_t *info);
 int is_del(char c, char *del);
 int _isalpha(int c);
 int _trum(char *d);
@@ -152,27 +152,27 @@ char *convert_num(long int num, int base, int flags);
 void rem_comments(char *buf);
 
 /* built_in.c */
-int _ourexit(info_t *data);
-int _ourcd(info_t *data);
-int _chcur(info_t *data);
+int _ourexit(info_t *info);
+int _ourcd(info_t *info);
+int _chcur(info_t *info);
 
 /* 1_builtin.c */
-int _myhistory(info_t *data);
-int set_alias(info_t *data, char *str);
-int unset_alias(info_t *data, char *str);
-int _alias(info_t *data);
+int _myhistory(info_t *info);
+int set_alias(info_t *info, char *str);
+int unset_alias(info_t *info, char *str);
+int _alias(info_t *info);
 int print_alias(list_t *node);
 
 /* line.c */
-ssize_t input_buff(info_t *inf, char **buff, size_t *len);
-ssize_t _input(info_t *inf);
+ssize_t input_buff(info_t *info, char **buff, size_t *len);
+ssize_t _input(info_t *info);
 ssize_t read_buf(info_t *info, char *buff, size_t *i);
 int _line(info_t *info, char **ptr, size_t *length);
 void sigintHandler(__attribute__((unused))int sig_num);
 
 /* info.c */
-void clear_inf(info_t *inf);
-void set_inf(info_t *inf, char **arv);
+void clear_inf(info_t *info);
+void set_inf(info_t *info, char **arv);
 void free_info(info_t *info, int eve);
 
 /* environment.c */
@@ -183,9 +183,9 @@ int _unsetenviron(info_t *info);
 int pop_env_list(info_t *info);
 
 /* env.c */
-char **get_env(info_t *inf);
-int _unsetenv(info_t *inf, char *var);
-int _setenv(info_t *inf, char *var, char *value);
+char **get_env(info_t *info);
+int _unsetenv(info_t *info, char *var);
+int _setenv(info_t *info, char *var, char *value);
 
 /* history.c */
 char *history_file(info_t *info);
