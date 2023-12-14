@@ -2,12 +2,12 @@
 
 /**
 * tokenizer - creates tokens from given input
-* @line: input to be tokenized
+* @line: to be tokenized
 * Return: array of strings
 */
 char **tokenizer(char *line)
 {
-	char *buf = NULL, *buff = NULL, *token = NULL, *del = " :\t\r\n";
+	char *buf = NULL, *bufp = NULL, *token = NULL, *delim = " :\t\r\n";
 	char **tokens = NULL;
 	int tokensize = 1;
 	size_t index = 0, flag = 0;
@@ -15,21 +15,21 @@ char **tokenizer(char *line)
 	buf = _strdup(line);
 	if (!buf)
 		return (NULL);
-	buff = buf;
+	bufp = buf;
 
-	while (*buff)
+	while (*bufp)
 	{
-		if (_strchr(del, *buff) != NULL && flag == 0)
+		if (_strchr(delim, *bufp) != NULL && flag == 0)
 		{
 			tokensize++;
 			flag = 1;
 		}
-		else if (_strchr(del, *buff) == NULL && flag == 1)
+		else if (_strchr(delim, *bufp) == NULL && flag == 1)
 			flag = 0;
-		buff++;
+		bufp++;
 	}
 	tokens = malloc(sizeof(char *) * (tokensize + 1));
-	token = strtok(buf, del);
+	token = strtok(buf, delim);
 	while (token)
 	{
 		tokens[index] = _strdup(token);
@@ -38,7 +38,7 @@ char **tokenizer(char *line)
 			free(tokens);
 			return (NULL);
 		}
-		token = strtok(NULL, del);
+		token = strtok(NULL, delim);
 		index++;
 	}
 	tokens[index] = '\0';

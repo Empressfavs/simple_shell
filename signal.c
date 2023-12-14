@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- *signal- it keeps track is interactive mode
+ *handle_signal- a function that keeps track of interactive mode
  *@s: the signal number
  *Return: nothing
  */
 
-void signal(int s)
+void handle_signal(int s)
 {
 	(void)s;
 	write(STDERR_FILENO, "\n", 1);

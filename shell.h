@@ -17,14 +17,15 @@ extern char **environ;
 extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 
 /* handle built ins */
-int check(char **cmd, char *buf);
+int checker(char **cmd, char *buf);
 void prompt_user(void);
-void signal(int s);
+void handle_signal(int s);
 char **tokenizer(char *line);
-char *test_path(char **path, char *cmd);
-char *attach_path(char *path, char *cmd);
-int built_ins(char **cmd, char *line);
-void exit(char **cmd, char *line);
+char *test_path(char **path, char *command);
+char *append_path(char *path, char *command);
+int handle_builtin(char **command, char *line);
+void exit_cmd(char **command, char *line);
+
 void print_env(void);
 
 /* string handlers */
@@ -34,12 +35,11 @@ int _strncmp(char *s1, char *s2, int n);
 char *_strdup(char *s);
 char *_strchr(char *s, char c);
 
-void exec(char *com, char **cmd);
+void execution(char *cp, char **cmd);
 char *find_path(void);
 
-
 /* helper function for efficient free */
-void free(char **buf);
+void free_buffers(char **buf);
 
 struct builtin
 {

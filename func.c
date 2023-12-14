@@ -13,17 +13,16 @@ int _putchar(char c)
 
 /**
 * print_str - prints a string
-* @p: string to be printed
-*
+* @s: string to be printed
 * Return: number of characters printed
 */
-int print_str(char *p)
+int print_str(char *s)
 {
 	int i = 0;
 
-	while (p[i] != '\0')
+	while (s[i] != '\0')
 	{
-		_putchar(p[i]);
+		_putchar(s[i]);
 		i++;
 	}
 
