@@ -1,12 +1,11 @@
 #include "shell.h"
 
 /**
-* free_buffers - frees buffers
+* free - frees buffers
 * @buf: buffer to be freed
-*
 * Return: no return
 */
-void free_buffers(char **buf)
+void free(char **buf)
 {
 	int i = 0;
 

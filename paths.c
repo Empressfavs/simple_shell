@@ -6,7 +6,7 @@
 */
 char *find_path(void)
 {
-	int x;
+	int i;
 	char **env = environ, *path = NULL;
 
 	while (*env)
@@ -17,7 +17,7 @@ char *find_path(void)
 			while (*path && x < 5)
 			{
 				path++;
-				x++;
+				i++;
 			}
 			return (path);
 		}
