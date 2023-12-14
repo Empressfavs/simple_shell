@@ -36,8 +36,6 @@ char *_strchr(char *s, char c);
 
 void exec(char *com, char **cmd);
 char *find_path(void);
-int print_str(char *p);
-int _putchar(char c);
 
 
 /* helper function for efficient free */
