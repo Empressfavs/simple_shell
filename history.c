@@ -65,7 +65,6 @@ int read_history(info_t *info)
 
 	if (!fname)
 		return (0);
-
 	fd = open(fname, O_RDONLY);
 	free(fname);
 	if (fd == -1)

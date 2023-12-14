@@ -2,19 +2,19 @@
 
 /**
  * clear_info - initializes info_t struct
- * @inf: struct address
+ * @info: struct address
  */
-void clear_info(info_t *inf)
+void clear_info(info_t *info)
 {
-	inf->arg = NULL;
-	inf->argv = NULL;
-	inf->path = NULL;
-	inf->argc = 0;
+	info->arg = NULL;
+	info->argv = NULL;
+	info->path = NULL;
+	info->argc = 0;
 }
 
 /**
  * set_info - initializes info_t struct
- * @inf: struct address
+ * @info: struct address
  * @arv: argument vector
  */
 void set_info(info_t *info, char **arv)

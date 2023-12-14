@@ -2,12 +2,12 @@
 
 /**
  * input_buff - buffers chained commands
- * @inf: parameter
+ * @info: parameter
  * @buff: address of the buffer
  * @len: address of the length variable
  * Return: bytes read
  */
-ssize_t input_buff(info_t *inf, char **buff, size_t *len)
+ssize_t input_buff(info_t *info, char **buff, size_t *len)
 {
 	ssize_t t = 0;
 	size_t len_t = 0;
@@ -20,7 +20,7 @@ ssize_t input_buff(info_t *inf, char **buff, size_t *len)
 #if USE_GETLINE
 		t = getline(buff, &len_t, stdin);
 #else
-		t = _line(inf, buff, &len_t);
+		t = _line(info, buff, &len_t);
 #endif
 		if (t > 0)
 		{
@@ -29,12 +29,12 @@ ssize_t input_buff(info_t *inf, char **buff, size_t *len)
 				(*buff)[t - 1] = '\0';
 				t--;
 			}
-			inf->linecount_flag = 1;
+			info->linecount_flag = 1;
 			rem_comments(*buff);
-			history_list(inf, *buff, inf->histcount++);
+			history_list(info, *buff, info->histcount++);
 			{
 				*len = t;
-				inf->cmd_buf = buff;
+				info->cmd_buf = buff;
 			}
 		}
 	}
@@ -43,16 +43,16 @@ ssize_t input_buff(info_t *inf, char **buff, size_t *len)
 
 /**
  * _input - gets a line minus the newline
- * @inf: parameter struct
+ * @info: parameter struct
  *
  * Return: bytes read
  */
-ssize_t _input(info_t *inf)
+ssize_t _input(info_t *info)
 {
 	static char *buff;
 	static size_t i, j, len;
 	ssize_t t = 0;
-	char **buf_f = &(inf->arg), *c;
+	char **buf_f = &(info->arg), *c;
 
 	_putchar(BUF_FLUSH);
 	t = input_buff(inf, &buff, &len);
@@ -63,10 +63,10 @@ ssize_t _input(info_t *inf)
 		j = i;
 		c = buff + i;
 
-		check_chain(inf, buff, &j, i, len);
+		check_chain(info, buff, &j, i, len);
 		while (j < len)
 		{
-			if (is_chain(inf, buff, &j))
+			if (is_chain(info, buff, &j))
 				break;
 			j++;
 		}
@@ -75,7 +75,7 @@ ssize_t _input(info_t *inf)
 		if (i >= len)
 		{
 			i = len = 0;
-			inf->cmd_buf_type = CMD_NORM;
+			info->cmd_buf_type = CMD_NORM;
 		}
 
 		*buf_f = c;
@@ -163,5 +163,4 @@ void sigintHandler(__attribute__((unused))int sig_num)
 	_puts("\n");
 	_puts("$ ");
 	_putchar(BUF_FLUSH);
-}
 
