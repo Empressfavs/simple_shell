@@ -47,7 +47,7 @@ typedef struct liststr
 } list_t;
 
 /**
- *struct passinfo - contains arguements to pass into a function,
+ *struct passinfo - contains arguements to pass into a function
  *@arg: a string generated from getline containing arguements
  *@argv: an array of strings generated from arg
  *@path: a string path for the current command
@@ -106,10 +106,10 @@ typedef struct builtin
 
 
 /* loop.c */
-int hsh(info_t *info, char **arv);
-int find_builtin(info_t *info);
-void find_cmd(info_t *info);
-void fork_cmd(info_t *info);
+int hsh(info_t *, char **);
+int find_builtin(info_t *);
+void find_cmd(info_t *);
+void fork_cmd(info_t *);
 
 /* parser.c */
 int is_command(info_t *data, char *path);
@@ -138,9 +138,9 @@ void _puts(char *str);
 int _putchar(char c);
 
 /* ext.c */
-char *_strncpy(char *dest, char *src, int n);
-char *_strncat(char *dest, char *src, int n);
-char *_strchr(char *s, char c);
+char *_strncpy(char *, char *, int);
+char *_strncat(char *, char *, int);
+char *_strchr(char *, char);
 
 /* token.c */
 char **strtow(char *str, char *d);
@@ -187,8 +187,8 @@ int _line(info_t *info, char **ptr, size_t *length);
 void sigintHandler(__attribute__((unused))int sig_num);
 
 /* info.c */
-void clear_inf(info_t *info);
-void set_inf(info_t *info, char **arv);
+void clear_info(info_t *info);
+void set_info(info_t *info, char **arv);
 void free_info(info_t *info, int eve);
 
 /* environment.c */

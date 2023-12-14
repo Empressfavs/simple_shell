@@ -34,7 +34,7 @@ char *_getenviron(info_t *info, const char *name)
 
 /**
  * _setenviron - Initialize a new environment var or modify an existing one
- * @info: Contains arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype
  *  Return: Always 0
  */
 int _setenviron(info_t *info)

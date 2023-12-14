@@ -3,25 +3,25 @@
 /**
  * hsh - main shell loop
  * @info: the parameter & return info struct
- * @arv: the argument vector from main()
+ * @av: the argument vector from main()
  *
  * Return: 0 on success, 1 on error, or error code
  */
-int hsh(info_t *info, char **arv)
+int hsh(info_t *info, char **av)
 {
 	ssize_t t = 0;
 	int b = 0;
 
 	while (t != -1 && b != -2)
 	{
-		clear_inf(info);
+		clear_info(info);
 		if (interact(info))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
 		t = _input(info);
 		if (t != -1)
 		{
-			set_inf(info, arv);
+			set_info(info, av);
 			b = find_builtin(info);
 			if (b == -1)
 				find_cmd(info);
@@ -150,4 +150,3 @@ void fork_cmd(info_t *info)
 		}
 	}
 }
-

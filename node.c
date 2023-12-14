@@ -78,18 +78,18 @@ list_t *end_node(list_t **head, const char *str, int num)
  * @l: pointer to first node
  * Return: size of list
  */
-size_t print_str(const list_t *l)
+size_t print_str(const list_t *h)
 {
-	size_t t = 0;
+	size_t i = 0;
 
-	while (l)
+	while (h)
 	{
-		_puts(l->str ? l->str : "(nil)");
+		_puts(h->str ? h->str : "(nil)");
 		_puts("\n");
-		l = l->next;
-		t++;
+		h = h->next;
+		i++;
 	}
-	return (t);
+	return (i);
 }
 
 /**
