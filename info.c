@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * clear_inf - initializes info_t struct
+ * clear_info - initializes info_t struct
  * @inf: struct address
  */
-void clear_inf(info_t *inf)
+void clear_info(info_t *inf)
 {
 	inf->arg = NULL;
 	inf->argv = NULL;
@@ -13,34 +13,34 @@ void clear_inf(info_t *inf)
 }
 
 /**
- * set_inf - initializes info_t struct
+ * set_info - initializes info_t struct
  * @inf: struct address
  * @arv: argument vector
  */
-void set_inf(info_t *inf, char **arv)
+void set_info(info_t *info, char **arv)
 {
 	int i = 0;
 
-	inf->fname = arv[0];
-	if (inf->arg)
+	info->fname = arv[0];
+	if (info->arg)
 	{
-		inf->argv = strtow(inf->arg, " \t");
-		if (!inf->argv)
+		info->argv = strtow(info->arg, " \t");
+		if (!info->argv)
 		{
 
-			inf->argv = malloc(sizeof(char *) * 2);
-			if (inf->argv)
+			info->argv = malloc(sizeof(char *) * 2);
+			if (info->argv)
 			{
-				inf->argv[0] = _strdupli(inf->arg);
-				inf->argv[1] = NULL;
+				info->argv[0] = _strdupli(info->arg);
+				info->argv[1] = NULL;
 			}
 		}
-		for (i = 0; inf->argv && inf->argv[i]; i++)
+		for (i = 0; info->argv && info->argv[i]; i++)
 			;
-		inf->argc = i;
+		info->argc = i;
 
-		rep_alias(inf);
-		rep_vars(inf);
+		rep_alias(info);
+		rep_vars(info);
 	}
 }
 

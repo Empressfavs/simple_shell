@@ -188,8 +188,8 @@ int _line(info_t *info, char **ptr, size_t *length);
 void sigintHandler(__attribute__((unused))int sig_num);
 
 /* info.c */
-void clear_inf(info_t *info);
-void set_inf(info_t *info, char **arv);
+void clear_info(info_t *info);
+void set_info(info_t *info, char **arv);
 void free_info(info_t *info, int eve);
 
 /* environment.c */
