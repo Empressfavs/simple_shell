@@ -55,8 +55,8 @@ char **strtow(char *str, char *d)
  */
 char **strtow2(char *str, char d)
 {
-	int i, j, k, m, n_words = 0;
-	char **s;
+int i, j, k, m, n_words = 0;
+char **s;
 
 	if (str == NULL || str[0] == 0)
 		return (NULL);
@@ -91,4 +91,3 @@ char **strtow2(char *str, char d)
 	s[j] = NULL;
 	return (s);
 }
-

@@ -9,11 +9,7 @@ char **get_env(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
-<<<<<<< HEAD
-		info->environ = list_str(inf->env);
-=======
 		info->environ = list_str(info->env);
->>>>>>> 84eefc18a4b9afdc660e6b233d3acac7ea513ff8
 		info->env_changed = 0;
 	}
 
@@ -54,9 +50,9 @@ int _unsetenv(info_t *info, char *var)
 /**
  * _setenv - Initialize a new environment variable,
  *             or modify an existing one
- * @info: Containing potential arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype.
  * @var: the string environment variable property
- * @val: the string environment variable value
+ * @value: the string environment variable value
  *  Return: Always 0
  */
 int _setenv(info_t *info, char *var, char *value)

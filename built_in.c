@@ -30,7 +30,7 @@ int _ourexit(info_t *info)
 
 /**
  * _ourcd - change the current directory of the process
- * @info: Contains potential arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
 int _ourcd(info_t *info)
@@ -58,13 +58,13 @@ int _ourcd(info_t *info)
 			return (1);
 		}
 		_puts(_getenviron(info, "OLDPWD=")), _putchar('\n');
-		ch_dir = chdir((direct = _getenviron(data, "OLDPWD=")) ? direct : "/");
+		ch_dir = chdir((direct = _getenviron(info, "OLDPWD=")) ? direct : "/");
 	}
 	else
 		ch_dir = chdir(info->argv[1]);
 	if (ch_dir == -1)
 	{
-		display_err(data, "can't cd to ");
+		display_err(info, "can't cd to ");
 		_eputs(info->argv[1]), _eputchar('\n');
 	}
 	else
@@ -77,7 +77,7 @@ int _ourcd(info_t *info)
 
 /**
  * _chcur - changes the current directory of the process
- * @info: Contains potential arguments used to maintain constant function prototype.
+ * @info: Contains arguments used to maintain constant function prototype.
  *  Return: Always 0
  */
 int _chcur(info_t *info)

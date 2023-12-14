@@ -72,4 +72,3 @@ int _trum(char *d)
 
 	return (output);
 }
-
