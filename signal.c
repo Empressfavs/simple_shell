@@ -2,6 +2,7 @@
 
 /**
  *secure_signal- it keeps track is interactive mode
+ *handle_signal- a function that keeps track if it is interactive mode
  *@m: the signal number
  *Return: nothing
  */

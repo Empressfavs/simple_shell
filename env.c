@@ -3,6 +3,7 @@
 /**
 * _env - prints the environment string to stdout
 *
+* print_env - a function that prints the environment string to stdout
 * Return: 0
 */
 void _env(void)

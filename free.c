@@ -1,9 +1,8 @@
 #include "shell.h"
 
 /**
-* free_buffers - frees buffers
+* free_buffers - a function that frees buffer
 * @buf: buffer to be freed
-*
 * Return: no return
 */
 void free_buffers(char **buf)

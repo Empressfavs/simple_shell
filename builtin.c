@@ -3,8 +3,9 @@
 /**
 * secure_inbuilt - handles execution of builtin functions
 * @cmd: tokenized commands
+* handle_builtin - a function that handles execution of builtin functions
+* @command: tokenized commands
 * @line: input read from stdin
-*
 * Return: 1 if executed, 0 if not
 */
 int secure_inbuilt(char **cmd, char *line)
