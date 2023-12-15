@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
-* find_path - finds the path from the global enviroment
+* find_path - a function that finds the path from the global enviroment
 * Return: NULL if path is not found or path if path is found.
 */
 char *find_path(void)
 {
-	int i;
+	int x;
 	char **env = environ, *path = NULL;
 
 	while (*env)
@@ -17,7 +17,7 @@ char *find_path(void)
 			while (*path && x < 5)
 			{
 				path++;
-				i++;
+				x++;
 			}
 			return (path);
 		}

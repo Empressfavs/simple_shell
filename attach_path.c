@@ -1,16 +1,16 @@
 #include "shell.h"
 
 /**
-* append_path - a function that adds path to a command
+* append_path - a function that adds path to command
 * @path: path of command
-* @command: command for user to enter
+* @command: user entered command
 * Return: buffer containing command with path on success
 * NULL on failure
 */
 char *append_path(char *path, char *command)
 {
 	char *buf;
-	size_t t = 0, n = 0;
+	size_t i = 0, j = 0;
 
 	if (command == 0)
 		command = "";
@@ -22,22 +22,22 @@ char *append_path(char *path, char *command)
 	if (!buf)
 		return (NULL);
 
-	while (path[t])
+	while (path[i])
 	{
-		buf[t] = path[t];
-		t++;
+		buf[i] = path[i];
+		i++;
 	}
 
-	if (path[t - 1] != '/')
+	if (path[i - 1] != '/')
 	{
-		buf[t] = '/';
-		t++;
+		buf[i] = '/';
+		i++;
 	}
-	while (command[n])
+	while (command[j])
 	{
-		buf[t + n] = command[n];
-		n++;
+		buf[i + j] = command[j];
+		j++;
 	}
-	buf[t + n] = '\0';
+	buf[i + j] = '\0';
 	return (buf);
 }

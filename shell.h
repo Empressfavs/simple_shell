@@ -19,7 +19,7 @@ extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 /* handle built ins */
 int checker(char **cmd, char *buf);
 void prompt_user(void);
-void handle_signal(int s);
+void handle_signal(int m);
 char **tokenizer(char *line);
 char *test_path(char **path, char *command);
 char *append_path(char *path, char *command);
