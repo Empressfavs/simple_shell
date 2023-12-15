@@ -1,13 +1,13 @@
 #include "shell.h"
 /**
- *checker- checks to see weather its a built in function
+ *assess - checks to see weather its a built in function
  *@cmd: tokenized user input
- *@buf: line drived fromgetline function
+ *@b: line drived fromgetline function
  *Return: 1 if cmd excuted 0 if cmd is not executed
  */
-int checker(char **cmd, char *buf)
+int assess(char **cmd, char *b)
 {
-	if (handle_builtin(cmd, buf))
+	if (handle_builtin(cmd, b))
 		return (1);
 	else if (**cmd == '/')
 	{

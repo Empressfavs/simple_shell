@@ -16,17 +16,17 @@
 extern char **environ;
 extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 
-/* handle built ins */
-int checker(char **cmd, char *buf);
-void prompt_user(void);
-void handle_signal(int m);
-char **tokenizer(char *line);
-char *test_path(char **path, char *command);
-char *append_path(char *path, char *command);
-int handle_builtin(char **command, char *line);
+/* path attached */
+int assess(char **cmd, char *b);
+void instant_user(void);
+void secure_signal(int m);
+char **tokeni(char *line);
+char *test_path(char **path, char *cmd);
+char *attach_path(char *path, char *cmd);
+int secure_inbuilt(char **cmd, char *line);
 void exit_cmd(char **command, char *line);
 
-void print_env(void);
+void _env(void);
 
 /* string handlers */
 int _strcmp(char *s1, char *s2);
