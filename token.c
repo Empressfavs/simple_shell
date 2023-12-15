@@ -2,7 +2,6 @@
 
 /**
 * tokeni - creates tokens from given input
-* tokenizer - a function that creates tokens from given input
 * @line: to be tokenized
 * Return: array of strings
 */
