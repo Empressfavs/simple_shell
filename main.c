@@ -17,26 +17,26 @@ int main(int ac, char **av, char *envp[])
 	(void)envp, (void)av;
 	if (ac < 1)
 		return (-1);
-	signal(SIGINT, handle_signal);
+	signal(SIGINT, secure_signal);
 	while (1)
 	{
 		free_buffers(command);
 		free_buffers(paths);
 		free(pathcommand);
-		prompt_user();
+		instant_user();
 		linesize = getline(&line, &bufsize, stdin);
 		if (linesize < 0)
 			break;
 		info.ln_count++;
 		if (line[linesize - 1] == '\n')
 			line[linesize - 1] = '\0';
-		command = tokenizer(line);
+		command = tokeni(line);
 		if (command == NULL || *command == NULL || **command == '\0')
 			continue;
-		if (checker(command, line))
+		if (assess(command, line))
 			continue;
 		path = find_path();
-		paths = tokenizer(path);
+		paths = tokeni(path);
 		pathcommand = test_path(paths, command[0]);
 		if (!pathcommand)
 			perror(av[0]);

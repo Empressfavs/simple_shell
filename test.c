@@ -14,7 +14,7 @@ char *test_path(char **path, char *command)
 
 	while (path[i])
 	{
-		output = append_path(path[i], command);
+		output = attach_path(path[i], command);
 		if (access(output, F_OK | X_OK) == 0)
 			return (output);
 		free(output);

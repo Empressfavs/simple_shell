@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
-* _env - prints the environment string to stdout
+* print_env - prints the environment string to stdout
 *
 * Return: 0
 */
-void _env(void)
+void print_env(void)
 {
 	int x = 0;
 	char **env = environ;

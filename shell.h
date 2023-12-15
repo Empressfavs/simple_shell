@@ -17,7 +17,7 @@ extern char **environ;
 extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 
 /* path attached */
-int assess(char **cmd, char *b);
+int assess(char **command, char *b);
 void instant_user(void);
 void secure_signal(int m);
 char **tokeni(char *line);
@@ -26,7 +26,7 @@ char *attach_path(char *path, char *cmd);
 int secure_inbuilt(char **cmd, char *line);
 void exit_cmd(char **command, char *line);
 
-void _env(void);
+void print_env(void);
 
 /* string handlers */
 int _strcmp(char *s1, char *s2);

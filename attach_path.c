@@ -12,8 +12,8 @@ char *attach_path(char *path, char *cmd)
 	char *b;
 	size_t i = 0, j = 0;
 
-	if (command == 0)
-		command = "";
+	if (cmd == 0)
+		cmd = "";
 
 	if (path == 0)
 		path = "";
