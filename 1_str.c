@@ -1,10 +1,8 @@
 #include "shell.h"
-
 /**
- * _strcpy - copies a string
+ * _strcpy - A function that copies a string
  * @dest: the destination
  * @src: the source
- *
  * Return: pointer to destination
  */
 char *_strcpy(char *dest, char *src)
@@ -23,32 +21,30 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * _strdup - duplicates a string
+ * _strdup - A function that duplicates a string
  * @str: the string to duplicate
- *
  * Return: pointer to the duplicated string
  */
 char *_strdup(const char *str)
 {
-	int length = 0;
-	char *ret;
+	int len = 0;
+	char *uns;
 
 	if (str == NULL)
 		return (NULL);
 	while (*str++)
-		length++;
-	ret = malloc(sizeof(char) * (length + 1));
-	if (!ret)
+		len++;
+	uns = malloc(sizeof(char) * (len + 1));
+	if (!uns)
 		return (NULL);
-	for (length++; length--;)
-		ret[length] = *--str;
-	return (ret);
+	for (len++; len--;)
+		uns[len] = *--str;
+	return (uns);
 }
 
 /**
- * _puts - prints an input string
+ * _puts - A function that prints an input string
  * @str: the string to be printed
- *
  * Return: Nothing
  */
 void _puts(char *str)
@@ -65,11 +61,9 @@ void _puts(char *str)
 }
 
 /**
- * _putchar - writes the character c to stdout
+ * _putchar - A function that writes the character c to stdout
  * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: On success 1 otherwise 0 on error
  */
 int _putchar(char c)
 {
