@@ -9,17 +9,17 @@
  */
 int hsh(info_t *info, char **av)
 {
-	ssize_t t = 0;
+	ssize_t r = 0;
 	int builtin_ret = 0;
 
-	while (t != -1 && builtin_ret != -2)
+	while (r != -1 && builtin_ret != -2)
 	{
 		clear_info(info);
 		if (interactive(info))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
-		t = get_input(info);
-		if (t != -1)
+		r = get_input(info);
+		if (r != -1)
 		{
 			set_info(info, av);
 			builtin_ret = find_builtin(info);
@@ -44,12 +44,13 @@ int hsh(info_t *info, char **av)
 }
 
 /**
- * find_builtin - A function that finds a builtin command
+ * find_builtin - finds a builtin command
  * @info: the parameter & return info struct
+ *
  * Return: -1 if builtin not found,
- * 	0 if builtin executed successfully,
- * 	1 if builtin found but not successful,
- * 	2 if builtin signals exit()
+ *			0 if builtin executed successfully,
+ *			1 if builtin found but not successful,
+ *			-2 if builtin signals exit()
  */
 int find_builtin(info_t *info)
 {
@@ -77,8 +78,9 @@ int find_builtin(info_t *info)
 }
 
 /**
- * find_cmd - A function that finds a command in PATH
+ * find_cmd - finds a command in PATH
  * @info: the parameter & return info struct
+ *
  * Return: void
  */
 void find_cmd(info_t *info)
@@ -107,7 +109,7 @@ void find_cmd(info_t *info)
 	else
 	{
 		if ((interactive(info) || _getenv(info, "PATH=")
-					|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
 		{
@@ -118,8 +120,9 @@ void find_cmd(info_t *info)
 }
 
 /**
- * fork_cmd - A function that forks a an exec thread to run cmd
+ * fork_cmd - forks a an exec thread to run cmd
  * @info: the parameter & return info struct
+ *
  * Return: void
  */
 void fork_cmd(info_t *info)
@@ -129,6 +132,7 @@ void fork_cmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
+		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
@@ -141,6 +145,7 @@ void fork_cmd(info_t *info)
 				exit(126);
 			exit(1);
 		}
+		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{
@@ -153,3 +158,4 @@ void fork_cmd(info_t *info)
 		}
 	}
 }
+
